@@ -1,18 +1,17 @@
 import sockette from 'sockette';
 import { h, Component } from 'preact';
 
-export default function Sockette(props) {
-	Component.call(this, props);
+export default function Sockette(props, context) {
+	Component.call(this, props, context);
 
-	let ws;
 	this.componentDidMount = () => {
-		ws = sockette(props.url, props);
+		context.ws = sockette(props.url, props);
 	}
 
 	this.shouldComponentUpdate = () => false;
 
 	this.componentWillUnmount = () => {
-		ws.close();
+		context.ws.close();
 	}
 }
 
