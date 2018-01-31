@@ -1,29 +1,21 @@
+import sockette from 'sockette';
 import { h, Component } from 'preact';
 
-export default class Foobar extends Component {
-	constructor(props) {
-		super(props);
-		this.state = { foo:123 };
+export default function Sockette(props) {
+	Component.call(this, props);
+
+	let ws;
+	this.componentDidMount = () => {
+		ws = sockette(props);
 	}
 
-	componentDidMount() {
-		//
-	}
+	this.shouldComponentUpdate = () => false;
 
-	componentWillReceiveProps(props) {
-		//
-	}
-
-	shouldComponentUpdate(props, state) {
-		const now = this.state;
-		//
-	}
-
-	componentDidUpdate(props, state) {
-		//
-	}
-
-	render(props, state) {
-		return <div>{ state.foo }</div>
+	this.componentWillUnmount = () => {
+		ws.close();
 	}
 }
+
+(Sockette.prototype = new Component()).constructor = Sockette;
+
+Sockette.prototype.render = () => '';

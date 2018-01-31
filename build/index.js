@@ -9,7 +9,7 @@ const umd = pkg['umd:main'];
 
 rollup({
 	input: 'src/index.js',
-	external: ['preact'],
+	external: ['preact', 'sockette'],
 	plugins: [
 		require('rollup-plugin-node-resolve')(),
 		require('rollup-plugin-buble')({
@@ -20,17 +20,20 @@ rollup({
 }).then(bun => {
 	bun.write({
 		format: 'cjs',
-		file: pkg.main
+		file: pkg.main,
+		interop: false
 	});
 
 	bun.write({
 		format: 'es',
-		file: pkg.module
+		file: pkg.module,
+		interop: false
 	});
 
 	bun.write({
 		file: umd,
 		format: 'umd',
+		interop: false,
 		name: pkg['umd:name'] || pkg.name
 	}).then(_ => {
 		const data = fs.readFileSync(umd, 'utf8');

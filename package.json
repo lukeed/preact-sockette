@@ -1,12 +1,12 @@
 {
   "version": "0.0.0",
-  "name": "preact-foobar",
-  "umd:name": "preactFoobar",
-  "repository": "lukeed/preact-foobar",
-  "description": "Foobar component for Preact",
-  "umd:main": "dist/preact-foobar.min.js",
-  "module": "dist/preact-foobar.es.js",
-  "main": "dist/preact-foobar.js",
+  "name": "preact-sockette",
+  "umd:name": "preactSockette",
+  "repository": "lukeed/preact-sockette",
+  "description": "Sockette component for Preact",
+  "umd:main": "dist/preact-sockette.min.js",
+  "module": "dist/preact-sockette.es.js",
+  "main": "dist/preact-sockette.js",
   "license": "MIT",
   "files": [
     "dist"
@@ -17,11 +17,12 @@
     "url": "https://lukeed.com"
   },
   "scripts": {
-    "build": "node build",
-    "pretest": "npm run build"
+    "build": "node build"
   },
   "keywords": [],
-  "dependencies": {},
+  "dependencies": {
+    "sockette": "^1.0.0"
+  },
   "devDependencies": {
     "gzip-size": "^4.1.0",
     "pretty-bytes": "^4.0.2",
