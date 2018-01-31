@@ -6,7 +6,7 @@ export default function Sockette(props) {
 
 	let ws;
 	this.componentDidMount = () => {
-		ws = sockette(props);
+		ws = sockette(props.url, props);
 	}
 
 	this.shouldComponentUpdate = () => false;
